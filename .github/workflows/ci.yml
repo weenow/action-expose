@@ -54,6 +54,7 @@ jobs:
         uses: ./
         with:
           secrets: ${{ toJSON(secrets) }}
+          prefix: EXP_
 
       - name: Print Output
         id: output
