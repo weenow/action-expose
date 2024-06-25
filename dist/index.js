@@ -24954,13 +24954,13 @@ const core = __importStar(__nccwpck_require__(2186));
 async function run() {
     const excludeList = ['github_token'];
     try {
-        const json = core.getInput('secrets', {
+        const json_secrets = core.getInput('json_secrets', {
             required: true
         });
         const prefix = core.getInput('prefix');
         let secrets;
         try {
-            secrets = JSON.parse(json);
+            secrets = JSON.parse(json_secrets);
         }
         catch (error) {
             throw new Error(`Cannot parse JSON secrets.

@@ -8,7 +8,7 @@ export async function run(): Promise<void> {
   const excludeList = ['github_token']
 
   try {
-    const json: string = core.getInput('secrets', {
+    const json_secrets: string = core.getInput('json_secrets', {
       required: true
     })
     const prefix: string = core.getInput('prefix')
@@ -16,7 +16,7 @@ export async function run(): Promise<void> {
     let secrets: Record<string, string>
 
     try {
-      secrets = JSON.parse(json)
+      secrets = JSON.parse(json_secrets)
     } catch (error) {
       throw new Error(`Cannot parse JSON secrets.
       Make sure you add the following to this action:

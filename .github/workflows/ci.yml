@@ -53,7 +53,7 @@ jobs:
         id: test-action
         uses: ./
         with:
-          secrets: ${{ toJSON(secrets) }}
+          json_secrets: ${{ toJSON(secrets) }}
           prefix: EXP_
 
       - name: Print Output

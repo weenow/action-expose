@@ -3,12 +3,13 @@ description: 'GitHub Action para exportar as secrets.'
 author: 'WeeNow'
 
 inputs:
-  secrets:
+  json_secrets:
     required: true
-    description: 'Use a função toJSON ${{ toJSON(secrets) }}.'
+    description: 'Use a função toJSON passando o secrets.'
   prefix:
     required: false
     description: 'Prefixo das secrets que deseja expor, e.g.: EXP_'
+
 runs:
   using: node20
   main: dist/index.js
