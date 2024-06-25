@@ -24973,7 +24973,7 @@ async function run() {
                 continue;
             }
             if (prefix) {
-                secretsToFormat.push(`${prefix}_${key}=${value}`);
+                secretsToFormat.push(`${key}=${value}`);
             }
         }
         const raw_secrets = secretsToFormat.join(' ');
