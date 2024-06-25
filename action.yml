@@ -2,11 +2,10 @@ name: 'Action Expose'
 description: 'GitHub Action para exportar as secrets.'
 author: 'WeeNow'
 
-# Define your inputs here.
 inputs:
   secrets:
     required: true
-    description: Use a função toJSON ${{ toJSON(secrets) }}.
+    description: 'Use a função toJSON ${{ toJSON(secrets) }}.'
   prefix:
     required: false
     description: 'Prefixo das secrets que deseja expor, e.g.: EXP_'
