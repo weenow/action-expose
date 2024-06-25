@@ -31,7 +31,7 @@ export async function run(): Promise<void> {
       }
 
       if (prefix) {
-        secretsToFormat.push(`${prefix}_${key}=${value}`)
+        secretsToFormat.push(`${key}=${value}`)
       }
     }
 
