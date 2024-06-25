@@ -24952,8 +24952,33 @@ const core = __importStar(__nccwpck_require__(2186));
  * @returns {Promise<void>} Resolves when the action is complete.
  */
 async function run() {
+    const excludeList = ['github_token'];
     try {
-        console.log('Testing');
+        const json = core.getInput('secrets', {
+            required: true
+        });
+        const prefix = core.getInput('prefix');
+        let secrets;
+        try {
+            secrets = JSON.parse(json);
+        }
+        catch (error) {
+            throw new Error(`Cannot parse JSON secrets.
+      Make sure you add the following to this action:
+      with: secrets: \${{ toJSON(secrets) }}`);
+        }
+        const secretsToFormat = [];
+        for (const [key, value] of Object.entries(secrets)) {
+            if (excludeList.includes(key)) {
+                continue;
+            }
+            if (prefix) {
+                secretsToFormat.push(`${prefix}_${key}=${value}`);
+            }
+        }
+        const raw_secrets = secretsToFormat.join(' ');
+        core.exportVariable('raw_secrets', raw_secrets);
+        core.info('Secrets formatted and exported successfully');
     }
     catch (error) {
         // Fail the workflow run if an error occurs
