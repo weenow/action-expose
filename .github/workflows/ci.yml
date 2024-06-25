@@ -53,7 +53,7 @@ jobs:
         id: test-action
         uses: ./
         with:
-          milliseconds: 2000
+          secrets: ${{ toJSON(secrets) }}
 
       - name: Print Output
         id: output
