@@ -1,4 +1,4 @@
-# Create a GitHub Action Using TypeScript
+# Action Expose
 
 [![GitHub Super-Linter](https://github.com/actions/typescript-action/actions/workflows/linter.yml/badge.svg)](https://github.com/weenow/action-expose/actions/workflows/linter.yml)
 ![CI](https://github.com/weenow/action-expose/actions/workflows/ci.yml/badge.svg)
@@ -9,6 +9,22 @@ GitHub Action para exportar as secrets no formato "KEY_1=value1 KEY_2=value2
 KEY_3=value3".
 
 ## Como usar ?
+
+Add the following action to your workflow:
+
+```yml
+steps:
+- uses: actions/checkout@v3
+- uses: oNaiPs/secrets-to-env-action@v1
+  with:
+    secrets: ${{ toJSON(secrets) }}
+    prefix: PREFIXED_
+- run: echo "Value of PREFIXED_MY_SECRET: $PREFIXED_MY_SECRET"
+```
+
+After running this action, subsequent actions will be able to access the secrets
+as env variables. Note the secrets key. It is mandatory so the action can read
+and export the secrets.
 
 ## Contribuir
 

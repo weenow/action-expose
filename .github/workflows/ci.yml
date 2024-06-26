@@ -53,8 +53,9 @@ jobs:
         id: test-action
         uses: ./
         with:
-          milliseconds: 2000
+          json_secrets: ${{ toJSON(secrets) }}
+          prefix: EXP_
 
       - name: Print Output
         id: output
-        run: echo "${{ steps.test-action.outputs.time }}"
+        run: echo "${{ env.raw_secrets }}"

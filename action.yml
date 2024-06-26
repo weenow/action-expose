@@ -1,23 +1,14 @@
-name: 'The name of your action here'
-description: 'Provide a description here'
-author: 'Your name or organization here'
+name: 'Action Expose'
+description: 'GitHub Action para exportar as secrets.'
+author: 'WeeNow'
 
-# Add your action's branding here. This will appear on the GitHub Marketplace.
-branding:
-  icon: 'heart'
-  color: 'red'
-
-# Define your inputs here.
 inputs:
-  milliseconds:
-    description: 'Your input description here'
+  json_secrets:
     required: true
-    default: '1000'
-
-# Define your outputs here.
-outputs:
-  time:
-    description: 'Your output description here'
+    description: 'Use a função toJSON passando o secrets.'
+  prefix:
+    required: false
+    description: 'Prefixo das secrets que deseja expor, e.g.: EXP_'
 
 runs:
   using: node20
